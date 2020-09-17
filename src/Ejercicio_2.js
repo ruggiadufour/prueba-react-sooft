@@ -1,27 +1,32 @@
 import React, {useState, useEffect} from 'react';
 
-export default function Ejercicio_1() {
-    let n = 5;
+export default function Ejercicio_2({numero}) {
+    const [n, setN] = useState(numero)
     const [matriz, setmatriz] = useState([])
     useEffect(()=>{
-        imprimirX();
+        imprimirX();        
     },[])
     const imprimirX = () =>{
-        for(let i = 0; i < n; i++) {
-            let fila = "";
-            let izq = 0;
-            let der = n-1;
-            for(let j = 0; j < n; j++) {
-                if(i===izq || i===der){
-                    fila = fila + "X"
-                }else{
-                    fila = fila + "_"
+        if(n===0){
+            alert("ERROR - Ejercicio 2: El valor de n es 0, por lo que no se puede imprimir el resultado")
+        }else{
+            
+            for(let i = 0; i < n; i++) {
+                let fila = "";
+                let izq = 0;
+                let der = n-1;
+                for(let j = 0; j < n; j++) {
+                    if(i===izq || i===der){
+                        fila = fila + "X"
+                    }else{
+                        fila = fila + "_"
+                    }
+                    izq++;
+                    der--;
                 }
-                izq++;
-                der--;
+                console.log(fila)
+                setmatriz((elemento) => [...elemento, fila]);
             }
-            console.log(fila)
-            setmatriz((elemento) => [...elemento, fila]);
         }
     }
 
